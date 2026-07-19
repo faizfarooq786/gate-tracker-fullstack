@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GATE 2028 CS — Topic Tracker</title>
+  <meta name="description" content="GATE 2028 Computer Science tracker. Add your own topics under each subject and tick them off from any device." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="title">GATE 2028 · CS</span>
+      <div class="prog-track" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progRole">
+        <div class="prog-fill" id="bar"></div>
+      </div>
+      <span class="prog-label" id="pct">0%</span>
+      <span class="prog-count" id="count">0/0 topics</span>
+      <div class="btns">
+        <button class="btn" id="theme" title="Toggle theme">◐ Theme</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <p class="eyebrow">Topic Tracker · saved to the cloud</p>
+      <h1>GATE 2028 · Computer Science</h1>
+      <p class="lede">Add your own topics under each subject and check them off as you go. Everything is saved to MongoDB, so you can track your progress from any device.</p>
+      <div class="chips">
+        <span class="chip">⏳ <b class="big" id="countdown">—</b> days to exam</span>
+        <span class="chip">🎯 Target <b>AIR &lt; 500</b></span>
+        <span class="chip">📝 Exam <b>~Feb 2028</b></span>
+        <span class="chip">🎓 Goal <b>IIT/IISc M.Tech</b></span>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <form class="add-subject" id="addSubjectForm" autocomplete="off">
+        <input type="text" id="newSubjectName" placeholder="Add a new subject…" maxlength="120" aria-label="New subject name" />
+        <select id="newSubjectPriority" aria-label="Priority">
+          <option value="q">Quick</option>
+          <option value="m" selected>Moderate</option>
+          <option value="h">Heavy</option>
+        </select>
+        <button type="submit" class="btn primary">+ Subject</button>
+      </form>
+      <span class="spacer"></span>
+      <div class="legend">
+        <span class="lg"><span class="dot q"></span> Quick</span>
+        <span class="lg"><span class="dot m"></span> Moderate</span>
+        <span class="lg"><span class="dot h"></span> Heavy</span>
+      </div>
+    </div>
+
+    <div id="app">
+      <div class="loading" id="loading">Loading your topics…</div>
+    </div>
+
+    <footer>
+      GATE 2028 CS tracker · data saved to MongoDB · <span id="dbnote"></span>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "gate-tracker-fullstack",
+  "version": "1.0.0",
+  "description": "GATE 2028 CS study tracker with a MongoDB backend. Add your own topics under each subject and tick them off from any device.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.17"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
+  }
+}
