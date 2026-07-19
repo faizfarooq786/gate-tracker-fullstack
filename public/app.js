@@ -37,7 +37,8 @@ function toast(msg, isErr) {
 
 // ---------- templates ----------
 function topicHTML(t) {
-  return `<li class="topic ${t.done ? "done" : ""}" data-tid="${t._id}">
+  return `<li class="topic ${t.done ? "done" : ""}" data-tid="${t._id}" draggable="true">
+    <span class="grip" aria-hidden="true" title="Drag to reorder">⠿</span>
     <span class="box" role="checkbox" tabindex="0" aria-checked="${t.done ? "true" : "false"}" aria-label="Toggle ${esc(t.name)}"></span>
     <span class="name">${esc(t.name)}</span>
     <button class="del" type="button" title="Delete topic" aria-label="Delete topic ${esc(t.name)}">×</button>
@@ -50,9 +51,10 @@ function topicsListHTML(s) {
 }
 
 function subjectHTML(s) {
-  return `<section class="subject ${s.priority}" data-sid="${s._id}">
+  return `<section class="subject ${s.priority}" data-sid="${s._id}" draggable="true">
     <div class="subject-head">
       <div class="subject-title">
+        <span class="grip subject-grip" aria-hidden="true" title="Drag to reorder subject">⠿</span>
         <h3>${esc(s.name)}</h3>
         <span class="tag ${s.priority}">${PRIORITY_LABEL[s.priority] || "Moderate"}</span>
         <button class="icon-btn del-subject" type="button" title="Delete subject" aria-label="Delete subject ${esc(s.name)}">🗑</button>
@@ -244,6 +246,93 @@ document.getElementById("addSubjectForm").addEventListener("submit", (e) => {
   addSubject(val, priEl.value);
   nameEl.value = "";
 });
+
+// ---------- drag & drop reordering ----------
+let dragEl = null;   // element currently being dragged
+let dragKind = null; // "topic" | "subject"
+
+app.addEventListener("dragstart", (e) => {
+  // Don't start a drag from interactive controls (checkbox, delete, inputs, buttons).
+  if (e.target.closest(".box, .del, .del-subject, input, textarea, button, select")) {
+    e.preventDefault();
+    return;
+  }
+  // A topic is the innermost draggable; if we're inside one, drag the topic,
+  // otherwise drag the whole subject card.
+  const topic = e.target.closest(".topic");
+  if (topic) {
+    dragEl = topic;
+    dragKind = "topic";
+  } else {
+    const subj = e.target.closest(".subject");
+    if (subj) { dragEl = subj; dragKind = "subject"; }
+  }
+  if (!dragEl) { e.preventDefault(); return; }
+  e.dataTransfer.effectAllowed = "move";
+  try { e.dataTransfer.setData("text/plain", ""); } catch (_) {}
+  requestAnimationFrame(() => dragEl && dragEl.classList.add("dragging"));
+});
+
+app.addEventListener("dragover", (e) => {
+  if (!dragEl) return;
+  e.preventDefault();
+  e.dataTransfer.dropEffect = "move";
+  if (dragKind === "topic") {
+    const over = e.target.closest(".topic");
+    const list = dragEl.parentElement;
+    if (over && over !== dragEl && over.parentElement === list) {
+      const rect = over.getBoundingClientRect();
+      const after = e.clientY - rect.top > rect.height / 2;
+      list.insertBefore(dragEl, after ? over.nextSibling : over);
+    }
+  } else {
+    const over = e.target.closest(".subject");
+    const grid = dragEl.parentElement;
+    if (over && over !== dragEl && over.parentElement === grid) {
+      const rect = over.getBoundingClientRect();
+      const after = e.clientY - rect.top > rect.height / 2;
+      grid.insertBefore(dragEl, after ? over.nextSibling : over);
+    }
+  }
+});
+
+app.addEventListener("drop", (e) => { if (dragEl) e.preventDefault(); });
+
+app.addEventListener("dragend", async () => {
+  if (!dragEl) return;
+  const el = dragEl, kind = dragKind;
+  el.classList.remove("dragging");
+  dragEl = null; dragKind = null;
+  try {
+    if (kind === "topic") {
+      const sid = el.closest(".subject").dataset.sid;
+      const list = el.parentElement;
+      const ids = [...list.querySelectorAll(".topic")].map((li) => li.dataset.tid);
+      reorderLocalTopics(sid, ids);
+      await api("PATCH", `/api/subjects/${sid}/topics/reorder`, { ids });
+    } else {
+      const grid = el.parentElement;
+      const ids = [...grid.querySelectorAll(".subject")].map((s) => s.dataset.sid);
+      reorderLocalSubjects(ids);
+      await api("PATCH", "/api/subjects/reorder", { ids });
+    }
+  } catch (err) {
+    toast(err.message + " — reloading order", true);
+    try { const data = await api("GET", "/api/state"); subjects = data.subjects || []; render(); } catch (_) {}
+  }
+});
+
+function reorderLocalTopics(sid, ids) {
+  const s = subjects.find((x) => x._id === sid);
+  if (!s) return;
+  const map = new Map(s.topics.map((t) => [t._id, t]));
+  s.topics = ids.map((id, i) => { const t = map.get(id); if (t) t.order = i; return t; }).filter(Boolean);
+}
+
+function reorderLocalSubjects(ids) {
+  const map = new Map(subjects.map((s) => [s._id, s]));
+  subjects = ids.map((id, i) => { const s = map.get(id); if (s) s.order = i; return s; }).filter(Boolean);
+}
 
 // ---------- theme ----------
 (function initTheme() {

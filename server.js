@@ -26,6 +26,33 @@ app.get("/api/state", wrap(async (req, res) => {
   res.json({ subjects });
 }));
 
+// Reorder subjects. Body: { ids: [subjectId, ...] } in the desired order.
+// Defined before "/api/subjects/:id/..." routes so it never gets shadowed.
+app.patch("/api/subjects/reorder", wrap(async (req, res) => {
+  const ids = Array.isArray(req.body?.ids) ? req.body.ids : null;
+  if (!ids || !ids.length || !ids.every(isId))
+    return res.status(400).json({ error: "ids array is required" });
+  await Promise.all(ids.map((id, i) => Subject.updateOne({ _id: id }, { $set: { order: i } })));
+  res.json({ ok: true });
+}));
+
+// Reorder topics within a subject. Body: { ids: [topicId, ...] } in the desired order.
+// Defined before the "/topics/:tid" route so "reorder" is not treated as a topic id.
+app.patch("/api/subjects/:id/topics/reorder", wrap(async (req, res) => {
+  if (!isId(req.params.id)) return res.status(400).json({ error: "Invalid id" });
+  const ids = Array.isArray(req.body?.ids) ? req.body.ids : null;
+  if (!ids) return res.status(400).json({ error: "ids array is required" });
+  const subject = await Subject.findById(req.params.id);
+  if (!subject) return res.status(404).json({ error: "Subject not found" });
+  const rank = new Map(ids.map((id, i) => [String(id), i]));
+  subject.topics.forEach((t) => {
+    const r = rank.get(String(t._id));
+    if (r !== undefined) t.order = r;
+  });
+  await subject.save();
+  res.json({ ok: true });
+}));
+
 // Create a subject.
 app.post("/api/subjects", wrap(async (req, res) => {
   const name = (req.body?.name || "").trim();
