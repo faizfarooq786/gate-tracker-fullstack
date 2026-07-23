@@ -348,6 +348,16 @@ document.getElementById("theme").addEventListener("click", () => {
   try { localStorage.setItem("gate2028-theme", next); } catch (e) {}
 });
 
+// ---------- study guide toggle ----------
+document.getElementById("guideBtn").addEventListener("click", () => {
+  const guide = document.getElementById("guide");
+  const btn = document.getElementById("guideBtn");
+  const show = guide.hasAttribute("hidden");
+  if (show) { guide.removeAttribute("hidden"); guide.scrollIntoView({ behavior: "smooth", block: "start" }); }
+  else { guide.setAttribute("hidden", ""); }
+  btn.setAttribute("aria-expanded", show ? "true" : "false");
+});
+
 // ---------- countdown ----------
 (function countdown() {
   const exam = new Date("2028-02-07T00:00:00");

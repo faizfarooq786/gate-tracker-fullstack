@@ -18,6 +18,7 @@
       <span class="prog-label" id="pct">0%</span>
       <span class="prog-count" id="count">0/0 topics</span>
       <div class="btns">
+        <button class="btn" id="guideBtn" title="Show study guide" aria-expanded="false">📖 Guide</button>
         <button class="btn" id="theme" title="Toggle theme">◐ Theme</button>
       </div>
     </div>
@@ -35,6 +36,96 @@
         <span class="chip">🎓 Goal <b>IIT/IISc M.Tech</b></span>
       </div>
     </header>
+
+    <section class="guide" id="guide" hidden aria-label="Study guide">
+      <div class="guide-inner">
+        <h2>📖 Study Guide — how to crack GATE 2027</h2>
+
+        <h3>How to use this tracker</h3>
+        <ul>
+          <li>Every subject holds the full GATE syllabus as topics — <strong>tick each topic</strong> as you finish it.</li>
+          <li><strong>Add your own topics</strong> (sub-topics, doubts, revision items) with the box under each subject.</li>
+          <li><strong>Drag the ⠿ handle</strong> to reorder topics or subjects — the order is saved.</li>
+          <li>Progress bars (top + per subject) update automatically.</li>
+        </ul>
+
+        <h3>7 ground rules</h3>
+        <ol>
+          <li><strong>Quality &gt; hours.</strong> 8 focused hours beat 12 distracted ones.</li>
+          <li><strong>PYQs are king.</strong> Solve 10–15 years of previous-year questions.</li>
+          <li><strong>Mocks build rank.</strong> Full timed mocks + deep analysis from Month 5.</li>
+          <li><strong>Spiral revision.</strong> Re-touch old subjects via daily PYQs.</li>
+          <li><strong>One rest day/week.</strong> Protect your sleep (7 hrs).</li>
+          <li><strong>Make short notes</strong> for every subject — your last-week revision.</li>
+          <li><strong>Don't fail college</strong> — but the syllabus overlaps, so it's synergistic.</li>
+        </ol>
+
+        <h3>Priority tiers (your dev background)</h3>
+        <ul>
+          <li>🟢 <strong>Quick:</strong> Programming &amp; DS, DBMS, General Aptitude — blitz these.</li>
+          <li>🟡 <strong>Moderate:</strong> OS, Networks, Algorithms, Digital Logic, Maths — drill problems.</li>
+          <li>🔴 <strong>Heavy (start early):</strong> Theory of Computation, Discrete Math, COA, Compiler.</li>
+        </ul>
+
+        <h3>Daily routine (10 hours)</h3>
+        <ul>
+          <li>~4h — new concepts (1 heavy + 1 lighter subject)</li>
+          <li>~2h — problem-solving on today's topics</li>
+          <li>~1.5h — PYQs of already-covered subjects (spiral revision)</li>
+          <li>~1.5h — Aptitude + Engineering Maths (daily habit)</li>
+          <li>~1h — revise the day + update short notes</li>
+        </ul>
+
+        <h3>How to study one topic (the flow)</h3>
+        <ol>
+          <li>Confirm it's in the syllabus (it's in this tracker).</li>
+          <li>Check its PYQ frequency (how important) on GATE Overflow.</li>
+          <li>Understand it — video for heavy subjects, book for your strong ones — <em>once</em>.</li>
+          <li>Make short notes.</li>
+          <li><strong>Solve problems yourself</strong> (this is 70% of learning).</li>
+          <li>Stuck? Ask AI or GATE Overflow.</li>
+          <li>Solve that topic's PYQs — this confirms you've studied enough.</li>
+          <li>Revise after 1 day / 1 week (active recall).</li>
+        </ol>
+
+        <h3>Is a topic really asked in GATE? (verify)</h3>
+        <ul>
+          <li><strong>Syllabus = boundary.</strong> Not in the syllabus → don't study it.</li>
+          <li><strong>PYQs = reality.</strong> On <em>gateoverflow.in</em>, filter a topic → see how many questions came in 10–15 years. Many → invest more; zero → skip depth.</li>
+          <li><strong>Check a weightage chart</strong> (marks per topic) and give time <strong>proportional to marks</strong>, not to how hard/interesting it is.</li>
+          <li><strong>Match depth to PYQs</strong> — study only as deep as GATE actually asks.</li>
+          <li>If a finished topic has no PYQs at all, you over-invested — move on faster next time.</li>
+        </ul>
+
+        <h3>How to remember (retention)</h3>
+        <ul>
+          <li><strong>Active recall</strong> — close the book and test yourself; don't re-read passively.</li>
+          <li><strong>Spaced repetition</strong> — revisit after 1 day → 1 week → 1 month.</li>
+          <li><strong>Solve, don't just read</strong> — retrieval builds memory.</li>
+          <li><strong>Short notes / formula sheets</strong> — reuse for revision.</li>
+          <li><strong>Feynman</strong> — explain it simply (to AI or aloud); gaps show up instantly.</li>
+        </ul>
+
+        <h3>PYQ &amp; mock strategy</h3>
+        <ul>
+          <li>PYQ source: <strong>GATE Overflow</strong> (free) + Made Easy / ACE books. Solve subject-wise, then full papers. Keep a mistake log.</li>
+          <li>From Month 5: <strong>3–4 full mocks/week</strong>, strictly timed. The 2–3h analysis matters more than the mock. Track your score trend.</li>
+        </ul>
+
+        <h3>Resources (pick one per subject)</h3>
+        <ul>
+          <li>PYQs + doubts: GATE Overflow · NPTEL for deep lectures</li>
+          <li>Videos: Neso Academy (TOC, DL, CN) · Gate Smashers (OS, DBMS, CN, COA, Compiler) · Abdul Bari (Algorithms, DS) · Knowledge Gate (Discrete)</li>
+          <li>Test series: Made Easy / ACE / PW GATE Wallah / Unacademy · Aptitude: R.S. Aggarwal</li>
+        </ul>
+
+        <h3>Do's &amp; Don'ts</h3>
+        <ul>
+          <li>✅ Stick to the routine · make &amp; reuse notes · solve PYQs from day one · rest weekly · focus on high-weightage topics.</li>
+          <li>❌ Don't hoard 10 resources · don't skip aptitude/maths (28 easy marks) · don't do theory-only · don't ignore college · don't compare speed with others.</li>
+        </ul>
+      </div>
+    </section>
 
     <div class="toolbar">
       <form class="add-subject" id="addSubjectForm" autocomplete="off">
