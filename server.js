@@ -119,7 +119,7 @@ app.get("/api/health", (req, res) => res.json({ ok: true, db: mongoose.connectio
 const PORT = process.env.PORT || 3000;
 connectDB()
   .then(() => {
-    app.listen(PORT, () => console.log(`✓ GATE tracker running on http://localhost:${PORT}`));
+    app.listen(PORT, () => console.log(`✓ Placement tracker running on http://localhost:${PORT}`));
   })
   .catch((err) => {
     console.error("✗ Startup failed:", err.message);

@@ -28,7 +28,7 @@ const { connectMongo, insertSeed, SEED } = require("./db");
 
     const after = await Subject.find().lean();
     const newTopics = after.reduce((n, s) => n + s.topics.length, 0);
-    console.log(`\n✓ Seeded ${after.length} subjects, ${newTopics} topics (full GATE syllabus).`);
+    console.log(`\n✓ Seeded ${after.length} areas, ${newTopics} topics (placement prep).`);
     console.log("Subjects:", SEED.map((s) => s.name).join(", "));
   } catch (err) {
     console.error("✗ Seed failed:", err.message);

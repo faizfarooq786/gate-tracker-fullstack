@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GATE 2028 CS — Topic Tracker</title>
-  <meta name="description" content="GATE 2028 Computer Science tracker. Add your own topics under each subject and tick them off from any device." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>" />
+  <title>Placement Prep — Topic Tracker</title>
+  <meta name="description" content="Placement preparation tracker (DSA, CS fundamentals, system design, development, aptitude & applying). Tick topics off from any device." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="topbar">
     <div class="topbar-inner">
-      <span class="title">GATE 2028 · CS</span>
+      <span class="title">Placement Prep</span>
       <div class="prog-track" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progRole">
         <div class="prog-fill" id="bar"></div>
       </div>
@@ -26,103 +26,88 @@
 
   <div class="wrap">
     <header>
-      <p class="eyebrow">Topic Tracker · saved to the cloud</p>
-      <h1>GATE 2028 · Computer Science</h1>
-      <p class="lede">Add your own topics under each subject and check them off as you go. Everything is saved to MongoDB, so you can track your progress from any device.</p>
+      <p class="eyebrow">Placement Tracker · saved to the cloud</p>
+      <h1>Placement Preparation</h1>
+      <p class="lede">Track every area — DSA, CS fundamentals, system design, development, aptitude & applying. Tick topics off as you go; everything is saved to MongoDB and synced across devices.</p>
       <div class="chips">
-        <span class="chip">⏳ <b class="big" id="countdown">—</b> days to exam</span>
-        <span class="chip">🎯 Target <b>AIR &lt; 500</b></span>
-        <span class="chip">📝 Exam <b>~Feb 2028</b></span>
-        <span class="chip">🎓 Goal <b>IIT/IISc M.Tech</b></span>
+        <span class="chip">🎯 Target <b>SDE / Full-stack roles</b></span>
+        <span class="chip">🧭 Route <b>Off-campus</b></span>
+        <span class="chip">🧩 Focus <b>DSA + Projects</b></span>
+        <span class="chip">🚀 Mode <b>Full-time</b></span>
       </div>
     </header>
 
     <section class="guide" id="guide" hidden aria-label="Study guide">
       <div class="guide-inner">
-        <h2>📖 Study Guide — how to crack GATE 2027</h2>
+        <h2>📖 Placement Guide — how to land the offer</h2>
 
         <h3>How to use this tracker</h3>
         <ul>
-          <li>Every subject holds the full GATE syllabus as topics — <strong>tick each topic</strong> as you finish it.</li>
-          <li><strong>Add your own topics</strong> (sub-topics, doubts, revision items) with the box under each subject.</li>
-          <li><strong>Drag the ⠿ handle</strong> to reorder topics or subjects — the order is saved.</li>
-          <li>Progress bars (top + per subject) update automatically.</li>
+          <li>Each area holds all topics — <strong>tick each one</strong> as you finish it.</li>
+          <li><strong>Add your own topics</strong> (specific problems, doubts, companies) under any area.</li>
+          <li><strong>Drag the ⠿ handle</strong> to reorder topics or areas — the order is saved.</li>
+          <li>Progress bars (top + per area) update automatically.</li>
         </ul>
 
-        <h3>7 ground rules</h3>
-        <ol>
-          <li><strong>Quality &gt; hours.</strong> 8 focused hours beat 12 distracted ones.</li>
-          <li><strong>PYQs are king.</strong> Solve 10–15 years of previous-year questions.</li>
-          <li><strong>Mocks build rank.</strong> Full timed mocks + deep analysis from Month 5.</li>
-          <li><strong>Spiral revision.</strong> Re-touch old subjects via daily PYQs.</li>
-          <li><strong>One rest day/week.</strong> Protect your sleep (7 hrs).</li>
-          <li><strong>Make short notes</strong> for every subject — your last-week revision.</li>
-          <li><strong>Don't fail college</strong> — but the syllabus overlaps, so it's synergistic.</li>
-        </ol>
-
-        <h3>Priority tiers (your dev background)</h3>
+        <h3>Off-campus reality (read this first)</h3>
         <ul>
-          <li>🟢 <strong>Quick:</strong> Programming &amp; DS, DBMS, General Aptitude — blitz these.</li>
-          <li>🟡 <strong>Moderate:</strong> OS, Networks, Algorithms, Digital Logic, Maths — drill problems.</li>
-          <li>🔴 <strong>Heavy (start early):</strong> Theory of Computation, Discrete Math, COA, Compiler.</li>
+          <li><strong>Nobody hands you an interview</strong> — your profile brings it. Keep Resume + LinkedIn + GitHub + LeetCode strong.</li>
+          <li><strong>Referrals &gt; cold applies</strong> — connect with people on LinkedIn and ask for referrals (5× more callbacks).</li>
+          <li><strong>DSA is king</strong> — online assessments and interviews across every tier rest on it.</li>
+          <li>Your <strong>real projects + experience</strong> already make you interview-worthy — the gap is DSA consistency.</li>
         </ul>
 
-        <h3>Daily routine (10 hours)</h3>
+        <h3>Full-time daily routine (~8 hours)</h3>
         <ul>
-          <li>~4h — new concepts (1 heavy + 1 lighter subject)</li>
-          <li>~2h — problem-solving on today's topics</li>
-          <li>~1.5h — PYQs of already-covered subjects (spiral revision)</li>
-          <li>~1.5h — Aptitude + Engineering Maths (daily habit)</li>
-          <li>~1h — revise the day + update short notes</li>
+          <li>~4h — <strong>DSA</strong>: learn a pattern + solve LeetCode problems (the core)</li>
+          <li>~1.5h — CS fundamentals + LLD / System design</li>
+          <li>~1h — early: profile & projects · later: applying + referrals</li>
+          <li>~1h — Aptitude (for service exams) + revision</li>
+          <li>~0.5h — mock / review · <strong>1 rest day/week</strong></li>
         </ul>
 
-        <h3>How to study one topic (the flow)</h3>
-        <ol>
-          <li>Confirm it's in the syllabus (it's in this tracker).</li>
-          <li>Check its PYQ frequency (how important) on GATE Overflow.</li>
-          <li>Understand it — video for heavy subjects, book for your strong ones — <em>once</em>.</li>
-          <li>Make short notes.</li>
-          <li><strong>Solve problems yourself</strong> (this is 70% of learning).</li>
-          <li>Stuck? Ask AI or GATE Overflow.</li>
-          <li>Solve that topic's PYQs — this confirms you've studied enough.</li>
-          <li>Revise after 1 day / 1 week (active recall).</li>
-        </ol>
-
-        <h3>Is a topic really asked in GATE? (verify)</h3>
+        <h3>DSA — how to practise</h3>
         <ul>
-          <li><strong>Syllabus = boundary.</strong> Not in the syllabus → don't study it.</li>
-          <li><strong>PYQs = reality.</strong> On <em>gateoverflow.in</em>, filter a topic → see how many questions came in 10–15 years. Many → invest more; zero → skip depth.</li>
-          <li><strong>Check a weightage chart</strong> (marks per topic) and give time <strong>proportional to marks</strong>, not to how hard/interesting it is.</li>
-          <li><strong>Match depth to PYQs</strong> — study only as deep as GATE actually asks.</li>
-          <li>If a finished topic has no PYQs at all, you over-invested — move on faster next time.</li>
+          <li><strong>Learn patterns, not random problems</strong> — two pointers, sliding window, binary search, trees, graphs, DP.</li>
+          <li>Follow one sheet: <em>Striver A2Z / SDE Sheet</em> or <em>NeetCode 150</em>.</li>
+          <li>Solve Easy → <strong>Medium</strong> (mediums are where offers are won); add Hards for FAANG.</li>
+          <li>Stuck 20–30 min? Read the approach, then <strong>re-solve from scratch</strong> next day.</li>
+          <li>Target: ~150–250 for product, ~300–400 for FAANG.</li>
         </ul>
 
-        <h3>How to remember (retention)</h3>
+        <h3>Retention (so you don't forget)</h3>
         <ul>
-          <li><strong>Active recall</strong> — close the book and test yourself; don't re-read passively.</li>
-          <li><strong>Spaced repetition</strong> — revisit after 1 day → 1 week → 1 month.</li>
-          <li><strong>Solve, don't just read</strong> — retrieval builds memory.</li>
-          <li><strong>Short notes / formula sheets</strong> — reuse for revision.</li>
-          <li><strong>Feynman</strong> — explain it simply (to AI or aloud); gaps show up instantly.</li>
+          <li><strong>Active recall</strong> — re-solve problems without looking; don't just re-read solutions.</li>
+          <li><strong>Spaced repetition</strong> — revisit a topic after 1 day → 1 week → 1 month.</li>
+          <li><strong>Maintain a notes/mistake log</strong> — patterns, edge cases, silly errors.</li>
+          <li><strong>Feynman</strong> — explain a solution aloud (or to AI); gaps show instantly.</li>
         </ul>
 
-        <h3>PYQ &amp; mock strategy</h3>
+        <h3>Projects & development (your edge)</h3>
         <ul>
-          <li>PYQ source: <strong>GATE Overflow</strong> (free) + Made Easy / ACE books. Solve subject-wise, then full papers. Keep a mistake log.</li>
-          <li>From Month 5: <strong>3–4 full mocks/week</strong>, strictly timed. The 2–3h analysis matters more than the mock. Track your score trend.</li>
+          <li>Keep your best 2–3 projects polished with live links + clean READMEs.</li>
+          <li>Be ready to <strong>explain every decision & trade-off</strong> (why this DB, how auth works, scaling).</li>
+          <li>Stay sharp in your stack (JS/TS, Angular/React, Node/Laravel, SQL/NoSQL, Git, Docker).</li>
         </ul>
 
-        <h3>Resources (pick one per subject)</h3>
+        <h3>Applying strategy</h3>
         <ul>
-          <li>PYQs + doubts: GATE Overflow · NPTEL for deep lectures</li>
-          <li>Videos: Neso Academy (TOC, DL, CN) · Gate Smashers (OS, DBMS, CN, COA, Compiler) · Abdul Bari (Algorithms, DS) · Knowledge Gate (Discrete)</li>
-          <li>Test series: Made Easy / ACE / PW GATE Wallah / Unacademy · Aptitude: R.S. Aggarwal</li>
+          <li>Portals: <strong>LinkedIn, Naukri, Instahyre, Wellfound, Cutshort</strong> + company career pages.</li>
+          <li>Service exams: <strong>TCS NQT, Infosys, Wipro, Cognizant, Accenture, Capgemini</strong> (register on their portals).</li>
+          <li>Apply <strong>daily</strong> once basics are done; chase referrals; track every application.</li>
+        </ul>
+
+        <h3>Resources</h3>
+        <ul>
+          <li>DSA: Striver (takeUforward), NeetCode, LeetCode, GeeksforGeeks</li>
+          <li>System Design / LLD: Striver LLD, Grokking the System Design</li>
+          <li>Aptitude: IndiaBix / R.S. Aggarwal · Mock interviews: Pramp / peers</li>
         </ul>
 
         <h3>Do's &amp; Don'ts</h3>
         <ul>
-          <li>✅ Stick to the routine · make &amp; reuse notes · solve PYQs from day one · rest weekly · focus on high-weightage topics.</li>
-          <li>❌ Don't hoard 10 resources · don't skip aptitude/maths (28 easy marks) · don't do theory-only · don't ignore college · don't compare speed with others.</li>
+          <li>✅ Solve DSA daily · learn patterns · polish projects · apply + chase referrals · do mock interviews.</li>
+          <li>❌ Don't hoard 10 resources · don't only watch (solve yourself) · don't wait till "fully ready" to apply · don't skip aptitude for service roles.</li>
         </ul>
       </div>
     </section>
@@ -150,7 +135,7 @@
     </div>
 
     <footer>
-      GATE 2028 CS tracker · data saved to MongoDB · <span id="dbnote"></span>
+      Placement prep tracker · data saved to MongoDB · <span id="dbnote"></span>
     </footer>
   </div>
 

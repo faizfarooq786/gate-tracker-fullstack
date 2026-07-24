@@ -358,11 +358,13 @@ document.getElementById("guideBtn").addEventListener("click", () => {
   btn.setAttribute("aria-expanded", show ? "true" : "false");
 });
 
-// ---------- countdown ----------
+// ---------- countdown (optional element) ----------
 (function countdown() {
+  const el = document.getElementById("countdown");
+  if (!el) return;
   const exam = new Date("2028-02-07T00:00:00");
   const days = Math.max(0, Math.ceil((exam - new Date()) / 86400000));
-  document.getElementById("countdown").textContent = days.toLocaleString();
+  el.textContent = days.toLocaleString();
 })();
 
 // ---------- boot ----------
